@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Abdelhamid Boughattas • Data Science & Digital Engineering</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Portfolio of Abdelhamid Boughattas – Data Science, AI and Digital Solutions Engineering."
+  />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-elevated: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border-subtle: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.08);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --transition-fast: 0.18s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e5edff 0, #f5f5f7 42%, #f5f5f7 100%);
+      color: var(--text-main);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 4rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(245, 245, 247, 0.88), transparent);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem 0.75rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f9fafb;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4);
+    }
+
+    .nav-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(37, 99, 235, 0.24);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      background: #ffffff;
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.04);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: -0.03em;
+      margin: 0 0 0.75rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 32rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.7rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast), border-color var(--transition-fast),
+        color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #f9fafb;
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.4);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      background: #ffffff;
+      border-color: rgba(148, 163, 184, 0.7);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-meta-icon {
+      font-size: 1rem;
+    }
+
+    .hero-right {
+      justify-self: center;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 24px;
+      padding: 1.4rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      backdrop-filter: blur(12px);
+      max-width: 320px;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .hero-card-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-card-body {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .hero-badge {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #f9fafb;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 1.8rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Cards */
+
+    .card {
+      background: var(--bg-elevated);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1.1rem 1.1rem 1.1rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      border-color: rgba(148, 163, 184, 0.8);
+      background: #ffffff;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.65rem;
+    }
+
+    .card-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.35rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.4rem;
+      padding-bottom: 0.75rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0.25rem;
+      top: 0.25rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 0.28rem;
+      top: 0.55rem;
+      width: 1px;
+      bottom: -0.1rem;
+      background: #e5e7eb;
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-role {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Skills */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .skill-block {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 0.9rem;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+    }
+
+    .skill-title {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 0.82rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .skill-chip {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    /* Contact */
+
+    .contact-card {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 22px;
+      padding: 1.6rem 1.7rem;
+      margin-top: 0.8rem;
+    }
+
+    .contact-text-main {
+      font-size: 0.98rem;
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-text-sub {
+      font-size: 0.82rem;
+      color: #9ca3af;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .btn-contact {
+      background: #f9fafb;
+      color: #111827;
+      border-radius: 999px;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .btn-contact:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+      background: #e5e7eb;
+    }
+
+    .btn-contact-outline {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-contact-outline:hover {
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    footer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 1.5rem 0 0.5rem;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .shell {
+        padding: 1rem 1.1rem 3rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-card {
+        padding: 1.2rem 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <nav class="nav">
+        <div class="nav-left">
+          <div class="nav-logo">AB</div>
+          <div class="nav-title">Abdelhamid Boughattas</div>
+        </div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="nav-cta" href="mailto:abdelhamidboughattas@gmail.com">
+          <span>Let’s talk</span> <span>↗</span>
+        </a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <!-- Hero -->
+      <section class="hero" id="top">
+        <div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            Available for a final-year internship – Feb 2026
+          </div>
+          <h1 class="hero-title">
+            Data Science & Digital Solutions<br />
+            <span>with a human-centered mindset.</span>
+          </h1>
+          <p class="hero-subtitle">
+            I’m a double-degree engineering student in <strong>Data Science</strong> and
+            <strong>Digital Solutions</strong> (3iL Ingénieurs • ESPRIT),
+            focusing on AI, machine learning and modern backend development.
+            I enjoy turning ideas and raw data into robust, useful products.
+          </p>
+          <div class="hero-actions">
+            <!-- Replace # with your real CV link if you host it -->
+            <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
+              <span>Download CV</span> <span>⬇</span>
+            </a>
+            <a
+              class="btn btn-ghost"
+              href="https://www.linkedin.com/in/abdelhamid-boughattas"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>View LinkedIn</span> <span>↗</span>
+            </a>
+          </div>
+          <div class="hero-meta">
+            <span>
+              <span class="hero-meta-icon">📍</span>
+              Limoges, France
+            </span>
+            <span>
+              <span class="hero-meta-icon">🎓</span>
+              3iL Ingénieurs • ESPRIT (Double Degree)
+            </span>
+            <span>
+              <span class="hero-meta-icon">💬</span>
+              FR / EN / AR
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div>
+                <div class="hero-card-title">Focus areas</div>
+              </div>
+              <div class="hero-card-tag">Data • AI • Software</div>
+            </div>
+            <div class="hero-card-body">
+              I like building systems that are <strong>reliable</strong>,
+              <strong>understandable</strong> and <strong>impactful</strong> —
+              from chatbots to medical AI and network security.
+            </div>
+            <div class="hero-badges">
+              <span class="hero-badge">Machine Learning</span>
+              <span class="hero-badge">Deep Learning</span>
+              <span class="hero-badge">NLP</span>
+              <span class="hero-badge">Big Data</span>
+              <span class="hero-badge">Python</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <div class="section-header">
+          <h2 class="section-title">About</h2>
+          <p class="section-kicker">Who I am and what I enjoy building.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <p class="card-body">
+              I’m currently pursuing a <strong>Master’s in Digital Solutions & Data</strong>
+              at 3iL Ingénieurs (France) and an <strong>Engineering degree in Data Science</strong>
+              at ESPRIT (Tunisia).
+              I enjoy working at the intersection of <strong>data, AI and software engineering</strong>.
+            </p>
+            <p class="card-body">
+              My interests include <strong>machine learning</strong>, <strong>deep learning</strong>,
+              <strong>NLP</strong>, and building digital solutions that solve real-world problems,
+              especially in fields like <strong>healthcare</strong>, <strong>education</strong>, and
+              <strong>enterprise tools</strong>.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">Highlights</div>
+            <ul class="card-body" style="padding-left: 1.1rem; margin: 0;">
+              <li>Certified in NLP with Transformers (NVIDIA DLI).</li>
+              <li>IBM Big Data Engineer Mastery Award.</li>
+              <li>Built AI solutions for remote sensing, medical imaging and intrusion detection.</li>
+              <li>Experience with chatbots, cloud, BI and IT service management.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills">
+        <div class="section-header">
+          <h2 class="section-title">Skills</h2>
+          <p class="section-kicker">Tools and technologies I work with.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-block">
+            <div class="skill-title">Languages & Frameworks</div>
+            <div class="skill-list">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">Java</span>
+              <span class="skill-chip">R</span>
+              <span class="skill-chip">.NET</span>
+              <span class="skill-chip">Spring Boot</span>
+              <span class="skill-chip">Symfony</span>
+              <span class="skill-chip">SQL</span>
+              <span class="skill-chip">NoSQL</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <div class="skill-title">AI & Data</div>
+            <div class="skill-list">
+              <span class="skill-chip">Machine Learning</span>
+              <span class="skill-chip">Deep Learning</span>
+              <span class="skill-chip">NLP</span>
+              <span class="skill-chip">Computer Vision</span>
+              <span class="skill-chip">RASA</span>
+              <span class="skill-chip">Statistics</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <div class="skill-title">Ecosystem</div>
+            <div class="skill-list">
+              <span class="skill-chip">Power BI</span>
+              <span class="skill-chip">GCP</span>
+              <span class="skill-chip">Jira</span>
+              <span class="skill-chip">Excel (advanced)</span>
+              <span class="skill-chip">ITIL</span>
+              <span class="skill-chip">Agile</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <div class="skill-title">Soft Skills</div>
+            <div class="skill-list">
+              <span class="skill-chip">Communication</span>
+              <span class="skill-chip">Teamwork</span>
+              <span class="skill-chip">Autonomy</span>
+              <span class="skill-chip">Problem-solving</span>
+              <span class="skill-chip">Leadership</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div class="section-header">
+          <h2 class="section-title">Selected Projects</h2>
+          <p class="section-kicker">A few things I’ve been working on.</p>
+        </div>
+        <div class="grid grid-2">
+          <article class="card">
+            <div class="card-title">Adaptive Mask-RCNN for Remote Sensing</div>
+            <div class="card-subtitle">Object detection • Deep Learning • Research</div>
+            <p class="card-body">
+              Implemented an adaptive Mask-RCNN architecture to detect objects in optical
+              remote sensing imagery (NWPUVHR-10 dataset), experimenting with different
+              optimizers like Adam, SGD and RMSProp.
+            </p>
+            <div class="tags">
+              <span class="tag">Mask-RCNN</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Python</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-title">Lung Cancer Detection with Deep Learning</div>
+            <div class="card-subtitle">Medical AI • CNN • U-Net • EfficientNet</div>
+            <p class="card-body">
+              Built a deep learning pipeline integrating CNN, U-Net, EfficientNetB0, VGG16
+              and InceptionV3 to assist in advanced CT-scan based lung cancer diagnosis.
+            </p>
+            <div class="tags">
+              <span class="tag">Deep Learning</span>
+              <span class="tag">Healthcare</span>
+              <span class="tag">Computer Vision</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-title">Network Intrusion Detection (NSL-KDD)</div>
+            <div class="card-subtitle">Cybersecurity • ML • Classification</div>
+            <p class="card-body">
+              Designed and evaluated an intrusion detection system using models such as
+              SVM, Random Forest, Naive Bayes, KNN, MLP and Decision Trees on the NSL-KDD dataset.
+            </p>
+            <div class="tags">
+              <span class="tag">Security</span>
+              <span class="tag">ML</span>
+              <span class="tag">NSL-KDD</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-title">Serenity – Humanized Mental Health Chatbot</div>
+            <div class="card-subtitle">NLP • RASA • Conversational AI</div>
+            <p class="card-body">
+              Built an empathic chatbot that interacts with users, understands mental
+              health-related concerns and offers supportive responses using RASA, DIET
+              classifier, NLU and interactive learning.
+            </p>
+            <div class="tags">
+              <span class="tag">RASA</span>
+              <span class="tag">NLP</span>
+              <span class="tag">Chatbot</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience">
+        <div class="section-header">
+          <h2 class="section-title">Experience</h2>
+          <p class="section-kicker">Professional and academic background.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-title">Work</div>
+            <div class="timeline-item">
+              <div class="timeline-role">Manager – Lucky Student</div>
+              <div class="timeline-meta">2023 – 2024 • Education services</div>
+              <div class="timeline-desc">
+                Managed tutors, coordinated planning and maintained communication
+                with students and parents, improving the overall tutoring experience.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-role">Web Developer – E-Build</div>
+              <div class="timeline-meta">2023 • Symfony 5.4</div>
+              <div class="timeline-desc">
+                Developed intuitive web interfaces for business owners to manage tasks
+                more efficiently.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-role">Final-Year Intern – NABDA</div>
+              <div class="timeline-meta">2022 • NLP & Chatbots</div>
+              <div class="timeline-desc">
+                Designed and implemented an empathic mental health chatbot with RASA,
+                using DIET classifier and TED Policy.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-role">Software Engineering Intern – Le Moteur</div>
+              <div class="timeline-meta">2021 • HR System</div>
+              <div class="timeline-desc">
+                Built a robust HR management system to handle presence certificates
+                and leave requests.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Education</div>
+            <div class="timeline-item">
+              <div class="timeline-role">3iL Ingénieurs</div>
+              <div class="timeline-meta">Master – Digital Solutions & Data • Limoges, France</div>
+              <div class="timeline-desc">
+                Manager des Solutions Digitales & Data, focusing on data engineering,
+                AI, cloud and project management.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-role">ESPRIT</div>
+              <div class="timeline-meta">Engineering in Data Science • Tunisia</div>
+              <div class="timeline-desc">
+                Double-degree Data Science curriculum with a strong emphasis on
+                AI, software engineering and big data.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-role">ISTIC</div>
+              <div class="timeline-meta">B.Sc. in Software Engineering & IS</div>
+              <div class="timeline-desc">
+                Solid foundations in software development, databases, systems and
+                information technologies.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Let’s connect</h2>
+          <p class="section-kicker">Open to internship opportunities and collaborations.</p>
+        </div>
+        <div class="contact-card">
+          <div>
+            <div class="contact-text-main">
+              Have an opportunity, a project or just want to say hi?
+            </div>
+            <div class="contact-text-sub">
+              I’m happy to discuss data, AI, software or anything in between.
+            </div>
+          </div>
+          <div class="contact-actions">
+            <a href="mailto:abdelhamidboughattas@gmail.com">
+              <button class="btn-contact">
+                <span>Write me an email</span> <span>✉️</span>
+              </button>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/abdelhamid-boughattas"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button class="btn-contact btn-contact-outline">
+                <span>Connect on LinkedIn</span> <span>↗</span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Abdelhamid Boughattas — Built with clean HTML & CSS.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Automatic year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
